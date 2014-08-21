@@ -629,19 +629,19 @@ namespace ServiceStack.Text
             RegisterElement<Poco, bool>();
             RegisterElement<Poco, char>();
             RegisterElement<Poco, byte>();
-            RegisterElement<Poco, sbyte>();
-            RegisterElement<Poco, short>();
-            RegisterElement<Poco, ushort>();
+            //RegisterElement<Poco, sbyte>();
+            //RegisterElement<Poco, short>();
+            //RegisterElement<Poco, ushort>();
             RegisterElement<Poco, int>();
             RegisterElement<Poco, uint>();
 
 			RegisterElement<Poco, long>();
-            RegisterElement<Poco, ulong>();
+            //RegisterElement<Poco, ulong>();
             RegisterElement<Poco, float>();
             RegisterElement<Poco, double>();
-            RegisterElement<Poco, decimal>();
+            //RegisterElement<Poco, decimal>();
 
-            RegisterElement<Poco, bool?>();
+            /*RegisterElement<Poco, bool?>();
             RegisterElement<Poco, char?>();
             RegisterElement<Poco, byte?>();
             RegisterElement<Poco, sbyte?>();
@@ -653,7 +653,7 @@ namespace ServiceStack.Text
             RegisterElement<Poco, ulong?>();
             RegisterElement<Poco, float?>();
             RegisterElement<Poco, double?>();
-            RegisterElement<Poco, decimal?>();
+            RegisterElement<Poco, decimal?>();*/
 
 			//RegisterElement<Poco, JsonValue>();
 
@@ -699,19 +699,19 @@ namespace ServiceStack.Text
 		{
 			internal static JsReader<JsonTypeSerializer> jsonReader;
 			internal static JsWriter<JsonTypeSerializer> jsonWriter;
-			internal static JsReader<JsvTypeSerializer> jsvReader;
-			internal static JsWriter<JsvTypeSerializer> jsvWriter;
+            //internal static JsReader<JsvTypeSerializer> jsvReader;
+            //internal static JsWriter<JsvTypeSerializer> jsvWriter;
 			internal static JsonTypeSerializer jsonSerializer;
-			internal static JsvTypeSerializer jsvSerializer;
+            //internal static JsvTypeSerializer jsvSerializer;
 
 			static AotConfig()
 			{
 				jsonSerializer = new JsonTypeSerializer();
-				jsvSerializer = new JsvTypeSerializer();
+                //jsvSerializer = new JsvTypeSerializer();
 				jsonReader = new JsReader<JsonTypeSerializer>();
 				jsonWriter = new JsWriter<JsonTypeSerializer>();
-				jsvReader = new JsReader<JsvTypeSerializer>();
-				jsvWriter = new JsWriter<JsvTypeSerializer>();
+                //jsvReader = new JsReader<JsvTypeSerializer>();
+                //jsvWriter = new JsWriter<JsvTypeSerializer>();
 			}
 
 			internal static int RegisterSerializers<T>()
@@ -723,11 +723,11 @@ namespace ServiceStack.Text
 				if (jsonReader.GetParseFn<T>() != null) i++;
 				if (jsonWriter.GetWriteFn<T>() != null) i++;
 
-				i += Register<T, JsvTypeSerializer>();
+                /*i += Register<T, JsvTypeSerializer>();
 				if (jsvSerializer.GetParseFn<T>() != null) i++;
 				if (jsvSerializer.GetWriteFn<T>() != null) i++;
 				if (jsvReader.GetParseFn<T>() != null) i++;
-				if (jsvWriter.GetWriteFn<T>() != null) i++;
+				if (jsvWriter.GetWriteFn<T>() != null) i++;*/
 
 
 				//RegisterCsvSerializer<T>();
@@ -737,10 +737,10 @@ namespace ServiceStack.Text
 
 			internal static void RegisterCsvSerializer<T>()
 			{
-				CsvSerializer<T>.WriteFn();
-				CsvSerializer<T>.WriteObject(null, null);
-				CsvWriter<T>.Write(null, default(IEnumerable<T>));
-				CsvWriter<T>.WriteRow(null, default(T));
+                //CsvSerializer<T>.WriteFn();
+                //CsvSerializer<T>.WriteObject(null, null);
+                //CsvWriter<T>.Write(null, default(IEnumerable<T>));
+                //CsvWriter<T>.WriteRow(null, default(T));
 			}
 
 			public static ParseStringDelegate GetParseFn(Type type)
